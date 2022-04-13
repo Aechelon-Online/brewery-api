@@ -2,11 +2,11 @@
 const selection = document.querySelector(".choose-city")
 
 async function listings() {
-  const cityRes = await fetch('https://api.openbrewerydb.org/breweries?by_state=texas&per_page=100')
+  const cityRes = await fetch('https://api.openbrewerydb.org/breweries/search?query=texas')
   const cityData = await cityRes.json()
   let newCity = cityData.map(item => item.city).sort()
   let newCityArr = [...new Set(newCity)]
-
+  console.log(cityData)
   for (i = 0; i < newCityArr.length; i++) {
   selection.innerHTML +=  
   `<option class="pick" value="${newCityArr[i]}">${newCityArr[i]}</option>`
